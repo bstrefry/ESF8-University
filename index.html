@@ -337,7 +337,7 @@
      <nav class="nav-links">
   <a href="index.html#about">About</a>
   <a href="resources.html">Resources</a>
-  <a href="index.html#vmoc">VMOC</a>
+  <a href="vmoc.html">VMOC</a>
   <a href="index.html#preparedness">Preparedness</a>
   <a href="index.html#contact">Contact</a>
 </nav>
@@ -378,10 +378,12 @@
             <span>Situation Dashboard Preview</span>
             <span class="badge">Prototype</span>
           </div>
-          <div class="alert-card">
-            <h3>VMOC Weekly Update</h3>
-            <p>Most recent weekly operational update and archive access.</p>
-          </div>
+          <a href="vmoc.html" style="text-decoration: none; color: inherit;">
+  <div class="alert-card" id="dashboard-vmoc">
+    <h3>VMOC Weekly Update</h3>
+    <p>Click here for newest infromation</p>
+  </div>
+</a>
           <a href="resources.html" style="text-decoration: none; color: inherit;">
   <div class="alert-card">
     <h3>Emergency Resources</h3>
@@ -480,16 +482,7 @@
       </div>
     </div>
 
-    <!-- ARCHIVE -->
-    <div class="timeline-item" style="margin-top: 30px;">
-      <div class="timeline-time">Archive</div>
-      <div>
-        <h3>Past VMOC Reports</h3>
-        <ul id="archive-vmoc" style="margin-top: 10px;"></ul>
-      </div>
-    </div>
-
-  </div>
+</div>
 </section>
 
     <section id="preparedness">
@@ -552,10 +545,7 @@
   vmocs.sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const current = vmocs[0];
-  const archive = vmocs.slice(1);
-
   const currentContainer = document.getElementById("current-vmoc");
-  const archiveContainer = document.getElementById("archive-vmoc");
 
   if (currentContainer && current) {
     const formattedCurrentDate = new Date(current.date + "T00:00:00").toLocaleDateString("en-US", {
@@ -595,33 +585,12 @@
       </p>
 
       <p style="margin-top: 12px;">
-        <a href="vmoc.html">
-          View All VMOC Reports →
+        <a href="vmoc.html"
+           style="display:inline-block; padding:10px 16px; background:#3ea6ff; color:white; border-radius:10px; font-weight:600; text-decoration:none;">
+          View All VMOC Reports
         </a>
       </p>
     `;
-  }
-
-  if (archiveContainer) {
-    archiveContainer.innerHTML = "";
-
-    archive.forEach(vmoc => {
-      const li = document.createElement("li");
-
-      const formattedDate = new Date(vmoc.date + "T00:00:00").toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-      });
-
-      li.innerHTML = `
-        <a href="${vmoc.link}" target="_blank">
-          ${vmoc.title} — ${formattedDate}
-        </a>
-      `;
-
-      archiveContainer.appendChild(li);
-    });
   }
 </script>
 </body>

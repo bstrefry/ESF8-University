@@ -1,3 +1,8 @@
+// This is there central archive for the VMOCs. Once entered here, and saved / uploaded the website will have another vmoc listed
+//They are automatically sorted by date, so the most recent will become the first shown, the rest will become archived, with links to the slideshare
+//Add title, date, and link to VMOCs here, will auto update for the most recent verison
+
+
 const vmocs = [
   {
     title: "YSPH VMOC Special Report — Measles, The Americas",
@@ -40,4 +45,3 @@ const vmocs = [
     link: "https://www.slideshare.net/slideshow/comprehensive-update-on-measles-outbreaks-and-public-health-responses-in-the-americas-2025-2026/286187254"
   }
 ];
-//Add title, date, and link to VMOCs here, will auto update for the most recent verison

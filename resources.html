@@ -137,6 +137,12 @@
       gap: 1rem;
     }
 
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
     .card {
       padding: 1.25rem;
       background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
@@ -170,6 +176,34 @@
       text-decoration: underline;
     }
 
+    .resource-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .resource-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .resource-logo {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      padding: 3px;
+      flex-shrink: 0;
+    }
+
+    .resource-item a {
+      color: #bfe3ff;
+      text-decoration: underline;
+    }
+
     .footer {
       border-top: 1px solid rgba(255,255,255,.08);
       color: var(--muted);
@@ -179,6 +213,10 @@
 
     @media (max-width: 960px) {
       .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2 {
         grid-template-columns: 1fr;
       }
 
@@ -199,7 +237,7 @@
       <nav class="nav-links">
         <a href="index.html">Home</a>
         <a href="resources.html">Resources</a>
-        <a href="index.html#vmoc">VMOC</a>
+        <a href="vmoc.html">VMOC</a>
         <a href="index.html#preparedness">Preparedness</a>
         <a href="index.html#contact">Contact</a>
       </nav>
@@ -230,30 +268,57 @@
           <article class="card">
             <h3>Public Health Guidance</h3>
             <p>Core public health agencies and disease response references.</p>
-            <ul>
-              <li><a href="https://www.cdc.gov" target="_blank">Centers for Disease Control and Prevention (CDC)</a></li>
-              <li><a href="https://www.who.int" target="_blank">World Health Organization (WHO)</a></li>
-              <li><a href="https://www.nih.gov" target="_blank">National Institutes of Health (NIH)</a></li>
+            <ul class="resource-list">
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=cdc.gov&sz=64" alt="CDC logo" class="resource-logo">
+                <a href="https://www.cdc.gov" target="_blank">Centers for Disease Control and Prevention (CDC)</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=who.int&sz=64" alt="WHO logo" class="resource-logo">
+                <a href="https://www.who.int" target="_blank">World Health Organization (WHO)</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=nih.gov&sz=64" alt="NIH logo" class="resource-logo">
+                <a href="https://www.nih.gov" target="_blank">National Institutes of Health (NIH)</a>
+              </li>
             </ul>
           </article>
 
           <article class="card">
             <h3>Emergency Management</h3>
             <p>Preparedness, response coordination, and emergency support resources.</p>
-            <ul>
-              <li><a href="https://www.fema.gov" target="_blank">Federal Emergency Management Agency (FEMA)</a></li>
-              <li><a href="https://aspr.hhs.gov" target="_blank">Administration for Strategic Preparedness and Response (ASPR)</a></li>
-              <li><a href="https://www.ready.gov" target="_blank">Ready.gov</a></li>
+            <ul class="resource-list">
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=fema.gov&sz=64" alt="FEMA logo" class="resource-logo">
+                <a href="https://www.fema.gov" target="_blank">Federal Emergency Management Agency (FEMA)</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=aspr.hhs.gov&sz=64" alt="ASPR logo" class="resource-logo">
+                <a href="https://aspr.hhs.gov" target="_blank">Administration for Strategic Preparedness and Response (ASPR)</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=ready.gov&sz=64" alt="Ready.gov logo" class="resource-logo">
+                <a href="https://www.ready.gov" target="_blank">Ready.gov</a>
+              </li>
             </ul>
           </article>
 
           <article class="card">
             <h3>Institutional & Academic Resources</h3>
             <p>University and professional resources that can support training and coordination.</p>
-            <ul>
-              <li><a href="https://ysph.yale.edu" target="_blank">Yale School of Public Health</a></li>
-              <li><a href="https://campushealth.yale.edu" target="_blank">Yale Campus Health</a></li>
-              <li><a href="https://publichealth.jhu.edu" target="_blank">Johns Hopkins Bloomberg School of Public Health</a></li>
+            <ul class="resource-list">
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=ysph.yale.edu&sz=64" alt="Yale logo" class="resource-logo">
+                <a href="https://ysph.yale.edu" target="_blank">Yale School of Public Health</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=campushealth.yale.edu&sz=64" alt="Yale Campus Health logo" class="resource-logo">
+                <a href="https://campushealth.yale.edu" target="_blank">Yale Campus Health</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=publichealth.jhu.edu&sz=64" alt="Johns Hopkins logo" class="resource-logo">
+                <a href="https://publichealth.jhu.edu" target="_blank">Johns Hopkins Bloomberg School of Public Health</a>
+              </li>
             </ul>
           </article>
         </div>
@@ -263,37 +328,110 @@
     <section>
       <div class="container">
         <div class="section-head">
-          <h2>Planned Additions</h2>
+          <h2>Quick Access Links</h2>
           <p>
-            This page can grow into a more operational toolkit as the project develops.
+            Curated links for situational awareness, emergency response, and public health monitoring.
           </p>
         </div>
 
-        <div class="grid-3">
+        <div class="grid-2">
           <article class="card">
-            <h3>Response Playbooks</h3>
-            <ul>
-              <li>Outbreak response checklists</li>
-              <li>Hospital coordination templates</li>
-              <li>Emergency communication guides</li>
+            <h3>News</h3>
+            <ul class="resource-list">
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=cnn.com&sz=64" alt="CNN logo" class="resource-logo">
+                <a href="https://www.cnn.com/?hpt=sitenav" target="_blank">CNN</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=bbc.com&sz=64" alt="BBC logo" class="resource-logo">
+                <a href="https://www.bbc.com/news" target="_blank">BBC News</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=trust.org&sz=64" alt="Reuters AlertNet logo" class="resource-logo">
+                <a href="https://www.trust.org/?show=alertnethumanitarian" target="_blank">Reuters AlertNet</a>
+              </li>
             </ul>
           </article>
 
           <article class="card">
-            <h3>Infectious Disease Resources</h3>
-            <ul>
-              <li>Measles response resources</li>
-              <li>Respiratory outbreak guidance</li>
-              <li>Emerging disease references</li>
+            <h3>Weather</h3>
+            <ul class="resource-list">
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=weather.com&sz=64" alt="Weather Channel logo" class="resource-logo">
+                <a href="https://weather.com" target="_blank">The Weather Channel</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=wunderground.com&sz=64" alt="Weather Underground logo" class="resource-logo">
+                <a href="https://www.wunderground.com" target="_blank">Weather Underground</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=weather.gov&sz=64" alt="National Weather Service logo" class="resource-logo">
+                <a href="https://www.weather.gov" target="_blank">National Weather Service</a>
+              </li>
             </ul>
           </article>
 
           <article class="card">
-            <h3>Training & Education</h3>
-            <ul>
-              <li>Case studies</li>
-              <li>Preparedness training materials</li>
-              <li>VMOC-linked educational resources</li>
+            <h3>Operations</h3>
+            <ul class="resource-list">
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=pdc.org&sz=64" alt="PDC logo" class="resource-logo">
+                <a href="https://www.pdc.org" target="_blank">Pacific Disaster Center</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=fema.gov&sz=64" alt="FEMA logo" class="resource-logo">
+                <a href="https://www.fema.gov" target="_blank">FEMA</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=cdc.gov&sz=64" alt="CDC Emergency logo" class="resource-logo">
+                <a href="https://www.cdc.gov/emergency/index.html" target="_blank">CDC Emergency Preparedness</a>
+              </li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Natural Disasters</h3>
+            <ul class="resource-list">
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=nifc.gov&sz=64" alt="NIFC logo" class="resource-logo">
+                <a href="https://www.nifc.gov" target="_blank">National Interagency Fire Center</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=usgs.gov&sz=64" alt="USGS logo" class="resource-logo">
+                <a href="https://www.usgs.gov" target="_blank">USGS</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=weather.gov&sz=64" alt="NOAA alerts logo" class="resource-logo">
+                <a href="https://www.weather.gov" target="_blank">NOAA / Weather Alerts</a>
+              </li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Medical / Public Health</h3>
+            <ul class="resource-list">
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=cdc.gov&sz=64" alt="CDC logo" class="resource-logo">
+                <a href="https://www.cdc.gov" target="_blank">CDC</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=who.int&sz=64" alt="WHO logo" class="resource-logo">
+                <a href="https://www.who.int" target="_blank">WHO</a>
+              </li>
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=nih.gov&sz=64" alt="NIH logo" class="resource-logo">
+                <a href="https://www.nih.gov" target="_blank">NIH</a>
+              </li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Special Tools</h3>
+            <ul class="resource-list">
+              <li class="resource-item">
+                <img src="https://www.google.com/s2/favicons?domain=archive.org&sz=64" alt="Wayback Machine logo" class="resource-logo">
+                <a href="https://web.archive.org" target="_blank">Wayback Machine</a>
+              </li>
             </ul>
           </article>
         </div>
