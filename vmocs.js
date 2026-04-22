@@ -1,6 +1,6 @@
 // This is there central archive for the VMOCs. Once entered here, and saved / uploaded the website will have another vmoc listed
-//They are automatically sorted by date, so the most recent will become the first shown, the rest will become archived, with links to the slideshare
-//Add title, date, and link to VMOCs here, will auto update for the most recent verison
+// They are automatically sorted by date, so the most recent will become the first shown, the rest will become archived, with links to the slideshare
+// Add title, date, and link to VMOCs here, will auto update for the most recent verison
 
 
 const vmocs = [
