@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ESF-8 University</title>
-  <meta name="description" content="ESF-8 public health and medical response platform providing training resources, VMOC situational awareness updates, and emergency preparedness tools for students, professionals, and response organizations." />
+  <title>Preparedness | ESF-8 University</title>
+  <meta name="description" content="Preparedness planning resources, VMOC setup materials, operational tools, and training references for public health emergency response." />
   <link rel="icon" href="favicon-v2.png" type="image/png">
   <link rel="shortcut icon" href="favicon-v2.png" type="image/png">
+
   <style>
     :root {
       --bg: #0b1220;
@@ -64,24 +65,12 @@
       font-weight: 800;
       letter-spacing: .2px;
     }
-    .brand-logo{
+
+    .brand-logo {
       width: 75px;
       height: 75px;
       object-fit: contain;
       display: inline-block;
-
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      display: grid;
-      place-items: center;
-      color: white;
-      font-weight: 900;
-      box-shadow: var(--shadow);
     }
 
     .nav-links {
@@ -253,7 +242,7 @@
     .section-head p {
       margin: 0;
       color: var(--muted);
-      max-width: 55ch;
+      max-width: 60ch;
     }
 
     .grid-3 {
@@ -286,20 +275,15 @@
       margin: .75rem 0 0;
     }
 
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 1rem;
-      padding: 1rem;
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      border: 1px solid rgba(255,255,255,.07);
-      border-radius: var(--radius);
-      margin-top: 1rem;
+    .resource-link {
+      display: inline-block;
+      margin-top: .9rem;
+      font-weight: 700;
+      color: #bfe3ff;
     }
 
-    .timeline-time {
-      color: #bfe3ff;
-      font-weight: 700;
+    .resource-link:hover {
+      color: white;
     }
 
     .cta {
@@ -323,8 +307,7 @@
       .hero-grid,
       .grid-3,
       .grid-2,
-      .stats,
-      .timeline-item {
+      .stats {
         grid-template-columns: 1fr;
       }
 
@@ -340,16 +323,16 @@
   <header class="nav">
     <div class="container nav-inner">
       <a href="index.html" class="brand">
-        <img src="favicon-v2.png"  class = "brand-logo">
+        <img src="favicon-v2.png" class="brand-logo" alt="ESF-8 University logo">
         <span>ESF-8 University</span>
       </a>
-     <nav class="nav-links">
-  <a href="index.html#about">About</a>
-  <a href="resources.html">Resources</a>
-  <a href="vmoc.html">VMOC</a>
-  <a href="preparedness.html">Preparedness</a>
-  <a href="index.html#contact">Contact</a>
-</nav>
+      <nav class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="resources.html">Resources</a>
+        <a href="vmoc.html">VMOC</a>
+        <a href="preparedness.html">Preparedness</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
     </div>
   </header>
 
@@ -357,180 +340,196 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Public Health & Medical Services • ESF-8</div>
-          <h1>Emergency Preparedness Resources For Public Health Response.</h1>
+          <div class="eyebrow">Preparedness & Planning • ESF-8</div>
+          <h1>Public Health Emergency Preparedness</h1>
           <p>
-            A modernized ESF-8 platform designed to support training, situational awareness, and coordinated emergency response for students, professionals, and partner organizations.
+            This section organizes core planning materials, VMOC setup resources, operational tools,
+            and training references to support institutional and public health emergency readiness.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#resources">Explore Resources</a>
-            <a class="btn btn-secondary" href="#vmoc">View VMOC Updates</a>
+            <a class="btn btn-primary" href="#frameworks">Explore Sections</a>
+            <a class="btn btn-secondary" href="vmoc.html">View VMOC Reports</a>
           </div>
           <div class="stats">
             <div class="stat">
+              <strong>Planning</strong>
+              <span>Emergency operations plans, frameworks, and readiness guides.</span>
+            </div>
+            <div class="stat">
+              <strong>Operations</strong>
+              <span>VMOC setup, reporting tools, and communication support.</span>
+            </div>
+            <div class="stat">
               <strong>Training</strong>
-              <span>Educational materials for emergency response and preparedness.</span>
-            </div>
-            <div class="stat">
-              <strong>VMOC</strong>
-              <span>Situational awareness updates and operational reporting.</span>
-            </div>
-            <div class="stat">
-              <strong>Coordination</strong>
-              <span>Shared tools for academic and public health collaboration.</span>
+              <span>Educational materials, reference tools, and preparedness learning.</span>
             </div>
           </div>
         </div>
 
         <aside class="hero-panel">
           <div class="panel-header">
-            <span>Situation Dashboard Preview</span>
-            <span class="badge">Prototype</span>
+            <span>Preparedness Overview</span>
+            <span class="badge">Resource Hub</span>
           </div>
-          <a href="vmoc.html" style="text-decoration: none; color: inherit;">
-  <div class="alert-card" id="dashboard-vmoc">
-    <h3>VMOC Weekly Update</h3>
-    <p>Click here for newest infromation</p>
-  </div>
-</a>
-          <a href="resources.html" style="text-decoration: none; color: inherit;">
-  <div class="alert-card">
-    <h3>Emergency Resources</h3>
-    <p>Quick-access links for guidance documents, playbooks, and training materials.</p>
-  </div>
-</a>
+
           <div class="alert-card">
-            <h3>Partner Coordination</h3>
-            <p>Section for institutional collaborations, contact directories, and response workflows.</p>
+            <h3>Planning Frameworks</h3>
+            <p>Core guidance documents and structures for coordinated response planning.</p>
+          </div>
+
+          <div class="alert-card">
+            <h3>VMOC Setup & Operations</h3>
+            <p>Templates and guides for establishing and operating a Virtual Medical Operations Center.</p>
+          </div>
+
+          <div class="alert-card">
+            <h3>Operational Tools</h3>
+            <p>Support materials for staffing, resource allocation, and emergency communication.</p>
           </div>
         </aside>
       </div>
     </section>
 
-    <section id="about">
+    <section id="frameworks">
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>About the platform</h2>
+            <h2>Planning Frameworks</h2>
             <p>
-              ESF-8 University is being modernized into a clean, accessible platform for public health emergency preparedness, medical response education, and collaborative situational awareness.
+              Foundational documents and planning structures that support coordinated emergency response across public health and healthcare settings.
             </p>
           </div>
         </div>
+
         <div class="grid-3">
           <article class="card">
-            <h3>Mission</h3>
-            <p>Support health and medical preparedness by making emergency response information easier to access, understand, and use.</p>
+            <h3>Emergency Operations Plan Template</h3>
+            <p>A structured framework for organizing health and medical response activities during emergencies.</p>
+            <a class="resource-link" href="assets/docs/eop-template.pdf" target="_blank">View Resource</a>
           </article>
+
           <article class="card">
-            <h3>Audience</h3>
-            <p>Students, faculty, public health professionals, healthcare teams, and partner organizations involved in preparedness and response.</p>
+            <h3>ESF-8 Framework Overview</h3>
+            <p>A high-level guide to ESF-8 roles, coordination structure, and public health responsibilities.</p>
+            <a class="resource-link" href="assets/docs/esf8-framework.pdf" target="_blank">View Resource</a>
           </article>
+
           <article class="card">
-            <h3>Focus</h3>
-            <p>Training resources, VMOC integration, disaster readiness tools, and coordinated response support across institutions.</p>
+            <h3>Response Planning Guide</h3>
+            <p>Guidance for building institutional readiness before a public health emergency occurs.</p>
+            <a class="resource-link" href="assets/docs/response-planning-guide.pdf" target="_blank">View Resource</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="resources">
+    <section id="vmoc-operations">
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>Core resources</h2>
-            <p>These sections can later link to real files, dashboards, partner tools, or downloadable guides.</p>
+            <h2>VMOC Setup & Operations</h2>
+            <p>
+              Resources for establishing, organizing, and operating a Virtual Medical Operations Center during public health response activities.
+            </p>
           </div>
         </div>
+
         <div class="grid-3">
           <article class="card">
-            <h3>Training Library</h3>
-            <ul>
-              <li>Emergency response fundamentals</li>
-              <li>Preparedness education modules</li>
-              <li>Public health response reference material</li>
-            </ul>
+            <h3>How to Establish a VMOC</h3>
+            <p>Introductory guidance for creating a VMOC structure during emergency response operations.</p>
+            <a class="resource-link" href="assets/docs/how-to-establish-vmoc.pdf" target="_blank">View Resource</a>
           </article>
+
           <article class="card">
-            <h3>Disaster Readiness</h3>
-            <ul>
-              <li>Response checklists</li>
-              <li>Incident support resources</li>
-              <li>Preparedness planning templates</li>
-            </ul>
+            <h3>VMOC Reporting Template</h3>
+            <p>A template for weekly operational reporting and situational awareness updates.</p>
+            <a class="resource-link" href="assets/docs/vmoc-report-template.pptx" target="_blank">Open Template</a>
           </article>
+
           <article class="card">
-            <h3>Partner Network</h3>
-            <ul>
-              <li>Academic collaboration pages</li>
-              <li>Response organization contacts</li>
-              <li>Shared coordination documents</li>
-            </ul>
+            <h3>Situation Report Guide</h3>
+            <p>A guide for developing concise, actionable situation reports for public health use.</p>
+            <a class="resource-link" href="assets/docs/sitrep-guide.pdf" target="_blank">View Resource</a>
           </article>
         </div>
       </div>
     </section>
 
-<section id="vmoc">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h2>VMOC Updates</h2>
-        <p>
-          Access the most recent VMOC report and browse archived updates below.
-        </p>
-      </div>
-    </div>
-
-    <!-- CURRENT -->
-    <div class="timeline-item">
-      <div class="timeline-time">Current</div>
-      <div>
-        <h3>Most Recent VMOC</h3>
-        <div id="current-vmoc"></div>
-      </div>
-    </div>
-
-</div>
-</section>
-
-    <section id="preparedness">
+    <section id="tools">
       <div class="container">
         <div class="section-head">
           <div>
-            <h2>Preparedness areas</h2>
-            <p>A simple structure for organizing the site into high-value public health emergency topics.</p>
+            <h2>Operational Tools</h2>
+            <p>
+              Practical materials that support staffing, communication, resource coordination, and institutional response planning.
+            </p>
           </div>
         </div>
-        <div class="grid-2">
+
+        <div class="grid-3">
           <article class="card">
-            <h3>Health & Medical Response</h3>
-            <p>Information related to patient support systems, public health coordination, medical surge, and emergency health operations.</p>
+            <h3>Resource Allocation Plan</h3>
+            <p>A planning tool for distributing critical personnel, supplies, and operational support.</p>
+            <a class="resource-link" href="assets/docs/resource-allocation-plan.pdf" target="_blank">View Resource</a>
           </article>
+
           <article class="card">
-            <h3>Situational Awareness</h3>
-            <p>Dashboards, alerts, summaries, and communication workflows to support timely decisions during incidents.</p>
+            <h3>Staffing & Surge Planning Template</h3>
+            <p>A template for planning emergency staffing needs and surge response capacity.</p>
+            <a class="resource-link" href="assets/docs/staffing-surge-template.pdf" target="_blank">View Resource</a>
           </article>
+
           <article class="card">
-            <h3>Training & Exercises</h3>
-            <p>Educational materials, scenario exercises, and preparedness workshops for building response capacity.</p>
+            <h3>Communication Planning Sheet</h3>
+            <p>A simple tool for organizing internal and external communication during response operations.</p>
+            <a class="resource-link" href="assets/docs/communication-planning-sheet.pdf" target="_blank">View Resource</a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="training">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Training & Educational Materials</h2>
+            <p>
+              Educational resources, reference tools, and class-based materials to support preparedness learning and response capacity building.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-3">
           <article class="card">
-            <h3>Guidance & Tools</h3>
-            <p>Operational playbooks, templates, reference documents, and curated external resources.</p>
+            <h3>Preparedness Training Slides</h3>
+            <p>Slide materials covering emergency preparedness concepts and public health response systems.</p>
+            <a class="resource-link" href="assets/docs/preparedness-training-slides.pdf" target="_blank">View Slides</a>
+          </article>
+
+          <article class="card">
+            <h3>Emergency Preparedness Checklist</h3>
+            <p>A quick-reference checklist for institutional and operational readiness.</p>
+            <a class="resource-link" href="assets/docs/preparedness-checklist.pdf" target="_blank">View Checklist</a>
+          </article>
+
+          <article class="card">
+            <h3>Class Resource Library</h3>
+            <p>A collection of course-based materials relevant to preparedness, planning, and response.</p>
+            <a class="resource-link" href="assets/docs/class-resource-library.pdf" target="_blank">View Library</a>
           </article>
         </div>
       </div>
     </section>
 
     <div class="container">
-      <section class="cta" id="contact">
-        <h2>Built for collaboration</h2>
+      <section class="cta">
+        <h2>Built to support preparedness</h2>
         <p>
-          This project is intended to support a collaborative academic and professional effort to strengthen ESF-8 communication, education, and emergency readiness.
+          This page is designed to organize public health emergency planning resources into a structure that is practical, accessible, and easy to expand as the project grows.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="mailto:info@example.com">Contact the Team</a>
+          <a class="btn btn-primary" href="resources.html">Explore More Resources</a>
           <a class="btn btn-secondary" href="#top">Back to Top</a>
         </div>
       </section>
@@ -542,65 +541,5 @@
       ESF-8 University • Public health and medical preparedness platform
     </div>
   </footer>
-
-  
-<script src="vmocs.js"></script>
-<script>
-  function getSlideShareEmbed(link) {
-    const match = link.match(/\/(\d+)(?:\/)?$/);
-    return match ? `https://www.slideshare.net/slideshow/embed_code/${match[1]}` : "";
-  }
-
-  vmocs.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  const current = vmocs[0];
-  const currentContainer = document.getElementById("current-vmoc");
-
-  if (currentContainer && current) {
-    const formattedCurrentDate = new Date(current.date + "T00:00:00").toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric"
-    });
-
-    const currentEmbed = getSlideShareEmbed(current.link);
-
-    currentContainer.innerHTML = `
-      <p style="font-weight:600; margin-top: 15px;">
-        ${current.title}
-      </p>
-
-      <p style="font-size: 0.9em; color: #aaa;">
-        Released: ${formattedCurrentDate}
-      </p>
-
-      ${
-        currentEmbed
-          ? `<iframe
-              src="${currentEmbed}"
-              width="100%"
-              height="600"
-              frameborder="0"
-              allowfullscreen
-              style="border-radius: 12px; border: none; margin-top: 15px;">
-            </iframe>`
-          : ""
-      }
-
-      <p style="margin-top: 10px;">
-        <a href="${current.link}" target="_blank">
-          Open Full Presentation
-        </a>
-      </p>
-
-      <p style="margin-top: 12px;">
-        <a href="vmoc.html"
-           style="display:inline-block; padding:10px 16px; background:#3ea6ff; color:white; border-radius:10px; font-weight:600; text-decoration:none;">
-          View All VMOC Reports
-        </a>
-      </p>
-    `;
-  }
-</script>
 </body>
 </html>
