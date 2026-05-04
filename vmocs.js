@@ -6,7 +6,7 @@
 const vmocs = [
  {
     title: "YSPH VMOC Special Report — Measles, The Americas",
-    date: "2026-05-3",
+    date: "2026-05-03",
     link: "https://www.slideshare.net/slideshow/ysph-vmoc-special-report-measles-the-americas-5-3-2026/287336251"
   },
   {
