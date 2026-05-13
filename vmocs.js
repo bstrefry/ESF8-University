@@ -4,21 +4,13 @@
 
 
 const vmocs = [
- {{
+ {
     title: "YSPH VMOC Special Report — Measles, The Americas",
     date: "2026-05-10",
     link: "https://www.slideshare.net/slideshow/ysph-vmoc-special-report-measles-the-americas-5-10-2026/287459265"
   },{
     title: "YSPH VMOC Special Report — Measles, The Americas",
     date: "2026-05-3",
-    link: "https://www.slideshare.net/slideshow/ysph-vmoc-special-report-measles-the-americas-5-3-2026/287336251"
-  },{
-    title: "YSPH VMOC Special Report — Measles, The Americas",
-    date: "2026-04-26",
-    link: "https://www.slideshare.net/slideshow/ysph-vmoc-special-report-measles-the-americas-4-26-2026/287211065"
-  },
-    title: "YSPH VMOC Special Report — Measles, The Americas",
-    date: "2026-05-03",
     link: "https://www.slideshare.net/slideshow/ysph-vmoc-special-report-measles-the-americas-5-3-2026/287336251"
   },
   {
