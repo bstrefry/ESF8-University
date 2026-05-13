@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resources | ESF-8 University</title>
   <meta name="description" content="Emergency preparedness, public health, and medical response resources for ESF-8 University." />
   <link rel="icon" href="favicon-v2.png" type="image/png">
-<link rel="shortcut icon" href="favicon-v2.png" type="image/png">
+  <link rel="shortcut icon" href="favicon-v2.png" type="image/png">
+
   <style>
     :root {
       --bg: #0b1220;
       --panel: #121b2d;
+      --panel-2: #17233a;
       --text: #eef4ff;
       --muted: #b4c2db;
       --line: #2a3958;
       --accent: #3ea6ff;
       --accent-2: #69c7a5;
+      --warning: #ffcf6e;
       --shadow: 0 18px 40px rgba(0,0,0,.28);
       --radius: 18px;
       --max: 1180px;
@@ -31,13 +33,18 @@
       background:
         radial-gradient(circle at top left, rgba(62,166,255,.14), transparent 28%),
         radial-gradient(circle at top right, rgba(105,199,165,.10), transparent 24%),
-        var(--bg);
+        linear-gradient(180deg, #0b1220 0%, #0a1424 45%, #0b1220 100%);
       color: var(--text);
       line-height: 1.6;
     }
 
     a { color: inherit; text-decoration: none; }
-    .container { width: min(100% - 2rem, var(--max)); margin: 0 auto; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(100% - 2rem, var(--max));
+      margin: 0 auto;
+    }
 
     .nav {
       position: sticky;
@@ -63,24 +70,12 @@
       font-weight: 800;
       letter-spacing: .2px;
     }
-    .brand-logo{
+
+    .brand-logo {
       width: 75px;
       height: 75px;
       object-fit: contain;
       display: inline-block;
-
-    }
-
-    .brand-mark {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      display: grid;
-      place-items: center;
-      color: white;
-      font-weight: 900;
-      box-shadow: var(--shadow);
     }
 
     .nav-links {
@@ -91,11 +86,57 @@
       font-size: .96rem;
     }
 
-    .hero {
-      padding: 4.5rem 0 2.5rem;
+    .nav-links a {
+      transition: color .2s ease;
     }
 
-    .eyebrow {
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      padding: .9rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #2a7adf);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary {
+      border-color: var(--line);
+      background: rgba(255,255,255,.02);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(62,166,255,.35);
+    }
+
+    .hero {
+      padding: 4.8rem 0 2.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, .72fr);
+      gap: 1.4rem;
+      align-items: stretch;
+    }
+
+    .eyebrow,
+    .mini-badge {
       display: inline-flex;
       align-items: center;
       gap: .5rem;
@@ -105,229 +146,625 @@
       color: #bfe3ff;
       border: 1px solid rgba(62,166,255,.22);
       font-size: .9rem;
-      margin-bottom: 1rem;
+      font-weight: 700;
     }
 
     h1 {
-      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-size: clamp(2.3rem, 5vw, 4.2rem);
       line-height: 1.05;
-      margin: 0 0 1rem;
-      letter-spacing: -1.3px;
+      margin: 1rem 0 1rem;
+      letter-spacing: -1.4px;
     }
 
     .hero p {
       color: var(--muted);
-      font-size: 1.06rem;
-      max-width: 65ch;
+      font-size: 1.07rem;
+      max-width: 66ch;
       margin: 0;
     }
 
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .85rem;
+      margin-top: 1.4rem;
+    }
+
+    .resource-panel {
+      padding: 1.2rem;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(23,35,58,.92), rgba(18,27,45,.94));
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: var(--shadow);
+      min-width: 0;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      color: var(--muted);
+      font-size: .95rem;
+      font-weight: 700;
+    }
+
+    .status-badge {
+      padding: .35rem .7rem;
+      border-radius: 999px;
+      background: rgba(105,199,165,.12);
+      border: 1px solid rgba(105,199,165,.25);
+      color: #c9f0e1;
+      font-size: .85rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .panel-resource {
+      display: flex;
+      gap: .8rem;
+      align-items: flex-start;
+      padding: .9rem;
+      border-radius: 16px;
+      background: rgba(11,18,32,.55);
+      border: 1px solid rgba(255,255,255,.07);
+      margin-bottom: .75rem;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .panel-resource:hover {
+      transform: translateY(-2px);
+      border-color: rgba(62,166,255,.28);
+    }
+
+    .panel-resource img {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: rgba(255,255,255,.06);
+      padding: 4px;
+      flex: 0 0 auto;
+    }
+
+    .panel-resource strong {
+      display: block;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: .15rem;
+    }
+
+    .panel-resource span {
+      display: block;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.45;
+    }
+
+    .panel-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .7rem;
+      margin-top: 1rem;
+    }
+
+    .panel-stat {
+      padding: .8rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .panel-stat strong {
+      display: block;
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-bottom: .4rem;
+    }
+
+    .panel-stat span {
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
     section {
-      padding: 1.5rem 0 3rem;
+      padding: 2rem 0 3.8rem;
+    }
+
+    .section-alt {
+      background: linear-gradient(180deg, rgba(255,255,255,.018), rgba(255,255,255,.008));
+      border-top: 1px solid rgba(255,255,255,.05);
+      border-bottom: 1px solid rgba(255,255,255,.05);
     }
 
     .section-head {
-      margin-bottom: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: end;
+      margin-bottom: 1.4rem;
     }
 
     .section-head h2 {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-size: clamp(1.7rem, 3vw, 2.45rem);
       margin: 0 0 .4rem;
+      letter-spacing: -.5px;
     }
 
     .section-head p {
       margin: 0;
       color: var(--muted);
-      max-width: 58ch;
+      max-width: 60ch;
+    }
+
+    .desk-card {
+      padding: 1.5rem;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(62,166,255,.12), rgba(105,199,165,.07));
+      border: 1px solid rgba(62,166,255,.18);
+      box-shadow: var(--shadow);
+      margin-bottom: 1.2rem;
+    }
+
+    .desk-card h2 {
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.1;
+      margin: .75rem 0 .8rem;
+      max-width: 820px;
+    }
+
+    .desk-card p {
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0;
+      font-size: 1.03rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: 1.2rem;
+    }
+
+    .pill {
+      padding: .45rem .75rem;
+      border-radius: 999px;
+      color: #d8e8ff;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.045);
+      font-weight: 700;
+      font-size: .92rem;
     }
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
     }
 
     .grid-2 {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
     }
 
     .card {
-      padding: 1.25rem;
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
-      border: 1px solid rgba(255,255,255,.07);
+      padding: 1.2rem;
+      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.015));
+      border: 1px solid rgba(255,255,255,.075);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+      min-width: 0;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(62,166,255,.30);
+      box-shadow: 0 22px 52px rgba(0,0,0,.34);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: .9rem;
+      margin-bottom: .75rem;
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(62,166,255,.18), rgba(105,199,165,.14));
+      border: 1px solid rgba(255,255,255,.09);
+      font-size: 1.25rem;
+      flex: 0 0 auto;
     }
 
     .card h3 {
-      margin: 0 0 .6rem;
-      font-size: 1.1rem;
+      margin: 0 0 .45rem;
+      font-size: 1.12rem;
     }
 
     .card p {
-      margin: 0 0 .85rem;
+      margin: 0 0 1rem;
       color: var(--muted);
     }
 
-    .card ul {
-      margin: 0;
-      padding-left: 1.1rem;
-      color: var(--muted);
-    }
-
-    .card li {
-      margin-bottom: .5rem;
-    }
-
-    .card a {
-      color: #bfe3ff;
-      text-decoration: underline;
+    .category-badge {
+      padding: .32rem .62rem;
+      border-radius: 999px;
+      color: #c9f0e1;
+      background: rgba(105,199,165,.11);
+      border: 1px solid rgba(105,199,165,.24);
+      font-size: .78rem;
+      font-weight: 800;
+      white-space: nowrap;
     }
 
     .resource-list {
       list-style: none;
       padding: 0;
       margin: 0;
-    }
-
-    .resource-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .resource-logo {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
-      border-radius: 6px;
-      background: rgba(255,255,255,0.05);
-      padding: 3px;
-      flex-shrink: 0;
+      display: grid;
+      gap: .7rem;
     }
 
     .resource-item a {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr) auto;
+      gap: .75rem;
+      align-items: center;
+      padding: .82rem;
+      border-radius: 15px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.07);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .resource-item a:hover {
+      transform: translateY(-2px);
+      background: rgba(62,166,255,.07);
+      border-color: rgba(62,166,255,.24);
+    }
+
+    .resource-logo {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      border-radius: 9px;
+      background: rgba(255,255,255,0.06);
+      padding: 4px;
+      flex-shrink: 0;
+    }
+
+    .resource-text strong {
+      display: block;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: .15rem;
+    }
+
+    .resource-text span {
+      display: block;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.35;
+    }
+
+    .arrow {
       color: #bfe3ff;
-      text-decoration: underline;
+      opacity: .85;
+      font-weight: 900;
+      padding-left: .4rem;
     }
 
     .footer {
       border-top: 1px solid rgba(255,255,255,.08);
       color: var(--muted);
       padding: 1.5rem 0 2.5rem;
-      margin-top: 2rem;
     }
 
-    @media (max-width: 960px) {
-      .grid-3 {
-        grid-template-columns: 1fr;
-      }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp .7s ease forwards;
+    }
 
+    .delay-1 { animation-delay: .08s; }
+    .delay-2 { animation-delay: .16s; }
+    .delay-3 { animation-delay: .24s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1000px) {
+      .hero-grid,
+      .grid-3,
       .grid-2 {
         grid-template-columns: 1fr;
       }
 
+      .section-head,
       .nav-inner {
         align-items: start;
         flex-direction: column;
       }
     }
+
+    @media (max-width: 560px) {
+      .brand-logo {
+        width: 58px;
+        height: 58px;
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .panel-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .resource-item a {
+        grid-template-columns: 32px minmax(0, 1fr);
+      }
+
+      .arrow {
+        display: none;
+      }
+    }
   </style>
 </head>
+
 <body>
   <header class="nav">
     <div class="container nav-inner">
-      <a href="#top" class="brand">
-        <img src="favicon-v2.png" alt="ESF-8 Logo" class = "brand-logo">
+      <a href="index.html" class="brand">
+        <img src="favicon-v2.png" alt="ESF-8 University logo" class="brand-logo">
         <span>ESF-8 University</span>
       </a>
+
       <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="resources.html">Resources</a>
+        <a href="index.html#about">About</a>
+        <a href="functions.html">Functions</a>
+        <a href="resources.html" aria-current="page">Resources</a>
         <a href="vmoc.html">VMOC</a>
-        <a href="index.html#preparedness">Preparedness</a>
+        <a href="preparedness.html">Preparedness</a>
         <a href="index.html#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero">
-      <div class="container">
-        <div class="eyebrow">Emergency Resources • ESF-8</div>
-        <h1>Emergency Preparedness and Public Health Resources.</h1>
-        <p>
-          A centralized page for public health guidance, emergency response tools, and medical preparedness references supporting ESF-8 operations, training, and situational awareness.
-        </p>
+      <div class="container hero-grid">
+        <div class="fade-up">
+          <div class="eyebrow">Emergency Resources • ESF-8</div>
+          <h1>Resources to Help Prevent Disasters.</h1>
+          <p>
+            A curated resource hub for public health guidance, emergency management tools,
+            medical preparedness references, weather monitoring, disaster information, and academic training support.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#core-resources">Browse Core Resources</a>
+            <a class="btn btn-secondary" href="#quick-access">Quick Access Links</a>
+          </div>
+        </div>
+
+        <aside class="resource-panel fade-up delay-1">
+          <div class="panel-header">
+            <span>Resource Hub Preview</span>
+            <span class="status-badge">Curated</span>
+          </div>
+
+          <a class="panel-resource" href="https://www.cdc.gov/emergency/index.html" target="_blank">
+            <img src="https://www.google.com/s2/favicons?domain=cdc.gov&sz=64" alt="CDC favicon">
+            <span>
+              <strong>CDC Emergency Preparedness</strong>
+              <span>Public health response guidance, emergency updates, and preparedness references.</span>
+            </span>
+          </a>
+
+          <a class="panel-resource" href="https://aspr.hhs.gov" target="_blank">
+            <img src="https://www.google.com/s2/favicons?domain=aspr.hhs.gov&sz=64" alt="ASPR favicon">
+            <span>
+              <strong>ASPR</strong>
+              <span>Medical response, healthcare readiness, and strategic preparedness support.</span>
+            </span>
+          </a>
+
+          <a class="panel-resource" href="https://www.weather.gov" target="_blank">
+            <img src="https://www.google.com/s2/favicons?domain=weather.gov&sz=64" alt="National Weather Service favicon">
+            <span>
+              <strong>National Weather Service</strong>
+              <span>Weather alerts and hazard monitoring for situational awareness.</span>
+            </span>
+          </a>
+
+          <div class="panel-stats">
+            <div class="panel-stat">
+              <strong>3</strong>
+              <span>Core areas</span>
+            </div>
+            <div class="panel-stat">
+              <strong>6</strong>
+              <span>Quick categories</span>
+            </div>
+            <div class="panel-stat">
+              <strong>20+</strong>
+              <span>Resource links</span>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section>
+    <section class="section-alt">
+      <div class="container">
+        <div class="desk-card fade-up">
+          <span class="mini-badge">Start here</span>
+          <h2>Use this page like a response desk, not just a link list.</h2>
+          <p>
+            Start with the situation you are trying to understand: disease guidance, medical response coordination,
+            weather hazards, disasters, operational monitoring, or academic training. Then choose the resource category
+            that best matches the need.
+          </p>
+
+          <div class="pill-row">
+            <span class="pill">Disease guidance</span>
+            <span class="pill">Medical response</span>
+            <span class="pill">Weather alerts</span>
+            <span class="pill">Emergency management</span>
+            <span class="pill">Academic training</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="core-resources">
       <div class="container">
         <div class="section-head">
-          <h2>Core Resource Areas</h2>
-          <p>
-            Start with foundational organizations and guidance, then expand this page over time into a full resource library.
-          </p>
+          <div>
+            <h2>Core resource areas</h2>
+            <p>
+              Start with foundational organizations and guidance, then expand this page over time into a full ESF-8 resource library.
+            </p>
+          </div>
         </div>
 
         <div class="grid-3">
-          <article class="card">
+          <article class="card fade-up">
+            <div class="card-top">
+              <div class="card-icon">🧬</div>
+              <span class="category-badge">Health</span>
+            </div>
             <h3>Public Health Guidance</h3>
             <p>Core public health agencies and disease response references.</p>
+
             <ul class="resource-list">
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=cdc.gov&sz=64" alt="CDC logo" class="resource-logo">
-                <a href="https://www.cdc.gov" target="_blank">Centers for Disease Control and Prevention (CDC)</a>
+                <a href="https://www.cdc.gov" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=cdc.gov&sz=64" alt="CDC logo" class="resource-logo">
+                  <span class="resource-text">
+                    <strong>CDC</strong>
+                    <span>Centers for Disease Control and Prevention</span>
+                  </span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=who.int&sz=64" alt="WHO logo" class="resource-logo">
-                <a href="https://www.who.int" target="_blank">World Health Organization (WHO)</a>
+                <a href="https://www.who.int" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=who.int&sz=64" alt="WHO logo" class="resource-logo">
+                  <span class="resource-text">
+                    <strong>WHO</strong>
+                    <span>World Health Organization</span>
+                  </span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=nih.gov&sz=64" alt="NIH logo" class="resource-logo">
-                <a href="https://www.nih.gov" target="_blank">National Institutes of Health (NIH)</a>
+                <a href="https://www.nih.gov" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=nih.gov&sz=64" alt="NIH logo" class="resource-logo">
+                  <span class="resource-text">
+                    <strong>NIH</strong>
+                    <span>National Institutes of Health</span>
+                  </span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card fade-up delay-1">
+            <div class="card-top">
+              <div class="card-icon">🚨</div>
+              <span class="category-badge">Response</span>
+            </div>
             <h3>Emergency Management</h3>
             <p>Preparedness, response coordination, and emergency support resources.</p>
+
             <ul class="resource-list">
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=fema.gov&sz=64" alt="FEMA logo" class="resource-logo">
-                <a href="https://www.fema.gov" target="_blank">Federal Emergency Management Agency (FEMA)</a>
+                <a href="https://www.fema.gov" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=fema.gov&sz=64" alt="FEMA logo" class="resource-logo">
+                  <span class="resource-text">
+                    <strong>FEMA</strong>
+                    <span>Federal Emergency Management Agency</span>
+                  </span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=aspr.hhs.gov&sz=64" alt="ASPR logo" class="resource-logo">
-                <a href="https://aspr.hhs.gov" target="_blank">Administration for Strategic Preparedness and Response (ASPR)</a>
+                <a href="https://aspr.hhs.gov" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=aspr.hhs.gov&sz=64" alt="ASPR logo" class="resource-logo">
+                  <span class="resource-text">
+                    <strong>ASPR</strong>
+                    <span>Strategic preparedness and medical response</span>
+                  </span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=ready.gov&sz=64" alt="Ready.gov logo" class="resource-logo">
-                <a href="https://www.ready.gov" target="_blank">Ready.gov</a>
+                <a href="https://www.ready.gov" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=ready.gov&sz=64" alt="Ready.gov logo" class="resource-logo">
+                  <span class="resource-text">
+                    <strong>Ready.gov</strong>
+                    <span>Preparedness planning for individuals and communities</span>
+                  </span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
             </ul>
           </article>
 
-          <article class="card">
-            <h3>Institutional & Academic Resources</h3>
-            <p>University and professional resources that can support training and coordination.</p>
+          <article class="card fade-up delay-2">
+            <div class="card-top">
+              <div class="card-icon">🎓</div>
+              <span class="category-badge">Training</span>
+            </div>
+            <h3>Institutional & Academic</h3>
+            <p>University and professional resources that support training and coordination.</p>
+
             <ul class="resource-list">
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=ysph.yale.edu&sz=64" alt="Yale logo" class="resource-logo">
-                <a href="https://ysph.yale.edu" target="_blank">Yale School of Public Health</a>
+                <a href="https://ysph.yale.edu" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=ysph.yale.edu&sz=64" alt="Yale logo" class="resource-logo">
+                  <span class="resource-text">
+                    <strong>Yale School of Public Health</strong>
+                    <span>Public health education and research</span>
+                  </span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=campushealth.yale.edu&sz=64" alt="Yale Campus Health logo" class="resource-logo">
-                <a href="https://campushealth.yale.edu" target="_blank">Yale Campus Health</a>
+                <a href="https://campushealth.yale.edu" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=campushealth.yale.edu&sz=64" alt="Yale Campus Health logo" class="resource-logo">
+                  <span class="resource-text">
+                    <strong>Yale Campus Health</strong>
+                    <span>Campus health information and services</span>
+                  </span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=publichealth.jhu.edu&sz=64" alt="Johns Hopkins logo" class="resource-logo">
-                <a href="https://publichealth.jhu.edu" target="_blank">Johns Hopkins Bloomberg School of Public Health</a>
+                <a href="https://publichealth.jhu.edu" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=publichealth.jhu.edu&sz=64" alt="Johns Hopkins logo" class="resource-logo">
+                  <span class="resource-text">
+                    <strong>Johns Hopkins Bloomberg SPH</strong>
+                    <span>Public health education and resources</span>
+                  </span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
             </ul>
           </article>
@@ -335,112 +772,198 @@
       </div>
     </section>
 
-    <section>
+    <section class="section-alt" id="quick-access">
       <div class="container">
         <div class="section-head">
-          <h2>Quick Access Links</h2>
-          <p>
-            Curated links for situational awareness, emergency response, and public health monitoring.
-          </p>
+          <div>
+            <h2>Quick access links</h2>
+            <p>
+              Curated links for situational awareness, emergency response, weather hazards, public health monitoring, and operational tools.
+            </p>
+          </div>
         </div>
 
-        <div class="grid-2">
-          <article class="card">
-            <h3>News</h3>
+        <div class="grid-3">
+          <article class="card fade-up">
+            <div class="card-top">
+              <div class="card-icon">📰</div>
+              <span class="category-badge">News</span>
+            </div>
+            <h3>News & Situation Updates</h3>
+            <p>Use these for broad awareness and developing event context.</p>
+
             <ul class="resource-list">
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=cnn.com&sz=64" alt="CNN logo" class="resource-logo">
-                <a href="https://www.cnn.com/?hpt=sitenav" target="_blank">CNN</a>
+                <a href="https://www.cnn.com/?hpt=sitenav" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=cnn.com&sz=64" alt="CNN logo" class="resource-logo">
+                  <span class="resource-text"><strong>CNN</strong><span>General news coverage</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=bbc.com&sz=64" alt="BBC logo" class="resource-logo">
-                <a href="https://www.bbc.com/news" target="_blank">BBC News</a>
+                <a href="https://www.bbc.com/news" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=bbc.com&sz=64" alt="BBC logo" class="resource-logo">
+                  <span class="resource-text"><strong>BBC News</strong><span>International news coverage</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=trust.org&sz=64" alt="Reuters AlertNet logo" class="resource-logo">
-                <a href="https://www.trust.org/?show=alertnethumanitarian" target="_blank">Reuters AlertNet</a>
+                <a href="https://www.trust.org/?show=alertnethumanitarian" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=trust.org&sz=64" alt="Reuters AlertNet logo" class="resource-logo">
+                  <span class="resource-text"><strong>Reuters AlertNet</strong><span>Humanitarian and crisis reporting</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
             </ul>
           </article>
 
-          <article class="card">
-            <h3>Weather</h3>
+          <article class="card fade-up delay-1">
+            <div class="card-top">
+              <div class="card-icon">🌦️</div>
+              <span class="category-badge">Weather</span>
+            </div>
+            <h3>Weather & Hazard Monitoring</h3>
+            <p>Use these to support hazard awareness and response planning.</p>
+
             <ul class="resource-list">
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=weather.com&sz=64" alt="Weather Channel logo" class="resource-logo">
-                <a href="https://weather.com" target="_blank">The Weather Channel</a>
+                <a href="https://weather.com" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=weather.com&sz=64" alt="Weather Channel logo" class="resource-logo">
+                  <span class="resource-text"><strong>The Weather Channel</strong><span>Weather forecasts and alerts</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=wunderground.com&sz=64" alt="Weather Underground logo" class="resource-logo">
-                <a href="https://www.wunderground.com" target="_blank">Weather Underground</a>
+                <a href="https://www.wunderground.com" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=wunderground.com&sz=64" alt="Weather Underground logo" class="resource-logo">
+                  <span class="resource-text"><strong>Weather Underground</strong><span>Local weather and forecasts</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=weather.gov&sz=64" alt="National Weather Service logo" class="resource-logo">
-                <a href="https://www.weather.gov" target="_blank">National Weather Service</a>
+                <a href="https://www.weather.gov" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=weather.gov&sz=64" alt="National Weather Service logo" class="resource-logo">
+                  <span class="resource-text"><strong>National Weather Service</strong><span>Official weather alerts and hazard information</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
             </ul>
           </article>
 
-          <article class="card">
-            <h3>Operations</h3>
+          <article class="card fade-up delay-2">
+            <div class="card-top">
+              <div class="card-icon">🛰️</div>
+              <span class="category-badge">Operations</span>
+            </div>
+            <h3>Operations & Emergency Response</h3>
+            <p>Use these for response coordination and operational awareness.</p>
+
             <ul class="resource-list">
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=pdc.org&sz=64" alt="PDC logo" class="resource-logo">
-                <a href="https://www.pdc.org" target="_blank">Pacific Disaster Center</a>
+                <a href="https://www.pdc.org" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=pdc.org&sz=64" alt="PDC logo" class="resource-logo">
+                  <span class="resource-text"><strong>Pacific Disaster Center</strong><span>Global disaster monitoring and analytics</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=fema.gov&sz=64" alt="FEMA logo" class="resource-logo">
-                <a href="https://www.fema.gov" target="_blank">FEMA</a>
+                <a href="https://www.fema.gov" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=fema.gov&sz=64" alt="FEMA logo" class="resource-logo">
+                  <span class="resource-text"><strong>FEMA</strong><span>Federal emergency management resources</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=cdc.gov&sz=64" alt="CDC Emergency logo" class="resource-logo">
-                <a href="https://www.cdc.gov/emergency/index.html" target="_blank">CDC Emergency Preparedness</a>
+                <a href="https://www.cdc.gov/emergency/index.html" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=cdc.gov&sz=64" alt="CDC logo" class="resource-logo">
+                  <span class="resource-text"><strong>CDC Emergency Preparedness</strong><span>Public health emergency guidance</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card fade-up">
+            <div class="card-top">
+              <div class="card-icon">🔥</div>
+              <span class="category-badge">Disasters</span>
+            </div>
             <h3>Natural Disasters</h3>
+            <p>Use these for hazards such as fires, earthquakes, weather events, and environmental emergencies.</p>
+
             <ul class="resource-list">
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=nifc.gov&sz=64" alt="NIFC logo" class="resource-logo">
-                <a href="https://www.nifc.gov" target="_blank">National Interagency Fire Center</a>
+                <a href="https://www.nifc.gov" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=nifc.gov&sz=64" alt="NIFC logo" class="resource-logo">
+                  <span class="resource-text"><strong>National Interagency Fire Center</strong><span>Wildfire information and coordination</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=usgs.gov&sz=64" alt="USGS logo" class="resource-logo">
-                <a href="https://www.usgs.gov" target="_blank">USGS</a>
+                <a href="https://www.usgs.gov" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=usgs.gov&sz=64" alt="USGS logo" class="resource-logo">
+                  <span class="resource-text"><strong>USGS</strong><span>Earth science, hazards, and monitoring</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=weather.gov&sz=64" alt="NOAA alerts logo" class="resource-logo">
-                <a href="https://www.weather.gov" target="_blank">NOAA / Weather Alerts</a>
+                <a href="https://www.weather.gov" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=weather.gov&sz=64" alt="NOAA alerts logo" class="resource-logo">
+                  <span class="resource-text"><strong>NOAA / Weather Alerts</strong><span>Official weather hazard alerts</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card fade-up delay-1">
+            <div class="card-top">
+              <div class="card-icon">⚕️</div>
+              <span class="category-badge">Medical</span>
+            </div>
             <h3>Medical / Public Health</h3>
+            <p>Use these when the event involves disease, health systems, medical response, or surveillance.</p>
+
             <ul class="resource-list">
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=cdc.gov&sz=64" alt="CDC logo" class="resource-logo">
-                <a href="https://www.cdc.gov" target="_blank">CDC</a>
+                <a href="https://www.cdc.gov" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=cdc.gov&sz=64" alt="CDC logo" class="resource-logo">
+                  <span class="resource-text"><strong>CDC</strong><span>Public health guidance and disease information</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=who.int&sz=64" alt="WHO logo" class="resource-logo">
-                <a href="https://www.who.int" target="_blank">WHO</a>
+                <a href="https://www.who.int" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=who.int&sz=64" alt="WHO logo" class="resource-logo">
+                  <span class="resource-text"><strong>WHO</strong><span>Global health guidance and emergency information</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=nih.gov&sz=64" alt="NIH logo" class="resource-logo">
-                <a href="https://www.nih.gov" target="_blank">NIH</a>
+                <a href="https://www.nih.gov" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=nih.gov&sz=64" alt="NIH logo" class="resource-logo">
+                  <span class="resource-text"><strong>NIH</strong><span>Biomedical research and health information</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
             </ul>
           </article>
 
-          <article class="card">
+          <article class="card fade-up delay-2">
+            <div class="card-top">
+              <div class="card-icon">🗄️</div>
+              <span class="category-badge">Tools</span>
+            </div>
             <h3>Special Tools</h3>
+            <p>Helpful tools for recovering, checking, or locating web-based information.</p>
+
             <ul class="resource-list">
               <li class="resource-item">
-                <img src="https://www.google.com/s2/favicons?domain=archive.org&sz=64" alt="Wayback Machine logo" class="resource-logo">
-                <a href="https://web.archive.org" target="_blank">Wayback Machine</a>
+                <a href="https://web.archive.org" target="_blank">
+                  <img src="https://www.google.com/s2/favicons?domain=archive.org&sz=64" alt="Wayback Machine logo" class="resource-logo">
+                  <span class="resource-text"><strong>Wayback Machine</strong><span>Archived snapshots of websites and pages</span></span>
+                  <span class="arrow">→</span>
+                </a>
               </li>
             </ul>
           </article>
